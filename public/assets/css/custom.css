@@ -1,0 +1,11 @@
+.paginate_button:hover {
+    background: #5e72e4 !important;
+}
+
+.paginate_button {
+    margin-right: 35px
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
