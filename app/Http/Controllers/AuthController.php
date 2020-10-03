@@ -33,8 +33,7 @@ class AuthController extends Controller
             Session::put('level', $data->level);
             Session::put('is_online', TRUE);
             return redirect('siswa')
-                    ->with('alert', "Berhasil masuk sebagai level $data->level.")
-                    ->with('type', 'success');
+                    ->with('alert', "Berhasil masuk sebagai level $data->level.");
             
         } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password])) {
 
@@ -81,13 +80,14 @@ class AuthController extends Controller
          
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         if (Auth::guard('petugas')->check()) {
-            Auth::guard('petugas')->Session::flush();
+            $request->session()->flush();
         } elseif (Auth::guard('user')->check()) {
-            Auth::guard('user')->Session::flush();;
+            $request->session()->flush();
         }
-        return redirect('/');
+        return redirect()->route('login');
+        
     }
 }

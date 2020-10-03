@@ -15,7 +15,7 @@
         <div class="container-fluid d-flex align-items-center">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="display-2 text-white">Hello {{ Session::get('nama') }}</h1>
+                    <h1 class="display-2 text-white">Hello {{ $user->nama }}</h1>
                 </div>
             </div>
         </div>
@@ -38,6 +38,7 @@
                     
                     <div class="card-body pt-0 mt-5">
                         <div class="text-center mt-5">
+                            <form id="form-edit-petugas" name="form-edit-petugas" method="post" enctype="multipart/form-data">
                             <input lang="en" class="btn btn-sm btn-primary" id="image" type="file" name="image"
                                 accept="image/*" onchange="readURL(this);">
                         </div>
@@ -53,27 +54,27 @@
                                 <h3 class="mb-0">Edit Profile </h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Ubah</a>
+                                <button type="submit" id="tombol-edit-petugas" class="btn btn-sm btn-primary">Ubah</button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                            <input type="hidden" name="id_petugas" value="{{ Session::get('id_petugas') }}">
                             <h6 class="heading-small text-muted mb-4">Informasi User</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-email">Email</label>
-                                            <input type="email" id="input-email" class="form-control" value="{{ Session::get('email') }}">
+                                            <input type="email" id="input-email" name="email" class="form-control" value="{{ $user->email }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-last-name">Nama</label>
-                                            <input type="text" id="input-last-name" class="form-control" value="{{ Session::get('nama') }}">
+                                            <label class="form-control-label" for="nama">Nama</label>
+                                            <input type="text" id="nama" name="nama" class="form-control" value="{{ $user->nama }}">
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +106,6 @@
                             </div>
                             <hr class="my-4" />
                             <!-- Description -->
-                            
                         </form>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'check'])->name('auth.check');
-Route::delete('/', [AuthController::class, 'logout'])->name('auth.destroy');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.destroy');
 
 Route::middleware('is.online')->group(function(){
     Route::group(['middeware' => ['auth:user,petugas']], function () {
