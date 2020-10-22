@@ -44,7 +44,7 @@
 //                 orderable: false,
 //                 searchable: false
 //             },
-            
+
 //             {
 //                 data: 'action',
 //                 name: 'action',
@@ -81,7 +81,7 @@
 //     var formData = new FormData(this);
 //     $.ajax({
 //         type: 'POST',
-//         url:  "{{ route('siswa.store')}}",
+//         url: "{{ route('siswa.store')}}",
 //         data: formData,
 //         cache: false,
 //         contentType: false,
@@ -131,7 +131,6 @@
 //             }
 //         })
 //     });
-
 //     $('body').on('click', '#delete-product', function () {
 //         var nisn = $(this).data("id");
 //         if (confirm("Are You sure want to delete !")) {
@@ -146,6 +145,29 @@
 //                     console.log('Error:', data);
 //                 }
 //             });
+//         }
+//     });
+// });
+
+// $('body').on('submit', '#form-edit-petugas', function (e) {
+//     e.preventDefault();
+//     var actionType = $('#btn-save').val();
+//     $('#btn-save').html('Sending..');
+//     var formData = new FormData(this);
+//     $.ajax({
+//         type: 'POST',
+//         url: "{{ route('profile.store')}}",
+//         data: formData,
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         success: (data) => {
+//             $('#btn-save').html('Save Changes');
+//             alert("Data Updated");
+//         },
+//         error: function (data) {
+//             console.log('Error:', data);
+//             $('#btn-save').html('Save Changes');
 //         }
 //     });
 // });

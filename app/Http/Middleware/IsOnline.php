@@ -15,6 +15,6 @@ class IsOnline
         }
 
         return redirect()->route('login')
-            ->with('alert', 'Masuk terlebih dahulu agar dapat mengakses halaman tersebut.');
+            ->with('alert', 'Anda harus login terlebih dahulu!.');
     }
 }

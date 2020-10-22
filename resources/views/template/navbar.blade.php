@@ -17,6 +17,7 @@
                 </button>
             </form> --}}
             <!-- Navbar links -->
+            <a href="{{ route('beranda.rakyat') }}"><h3>Dreamapps</h3></a>
             <ul class="navbar-nav align-items-center  ml-md-auto ">
                 <li class="nav-item d-xl-none">
                     <!-- Sidenav toggler -->
@@ -41,7 +42,7 @@
                         aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                                <img alt="Image placeholder" src="{{ asset('/assets/img/theme/team-4.jpg') }}">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold"> </span>
@@ -52,6 +53,25 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
+                        @if(Auth::guard('user')->check())
+                        <a href="{{ route('profile.rakyat') }}" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="{{ route('kasus.rakyat') }}" class="dropdown-item">
+                            <i class="ni ni-calendar-grid-58"></i>
+                            <span>Kasus Ku</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-support-16"></i>
+                            <span>Support</span>
+                        </a>
+                        @endif
+                        @if(Auth::guard('petugas')->check())
                         <a href="#!" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
@@ -68,6 +88,7 @@
                             <i class="ni ni-support-16"></i>
                             <span>Support</span>
                         </a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('auth.destroy') }}" class="dropdown-item">
                             <i class="ni ni-user-run"></i>

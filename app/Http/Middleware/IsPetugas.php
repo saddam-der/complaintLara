@@ -4,18 +4,17 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class IsPetugas
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Session::get('level') == 'admin' && 'petugas') {
+            return $next($request);
+        }
+
+        return redirect()->back()
+            ->with('alert', 'Mohon maaf anda bukan admin dan petugas');
     }
 }

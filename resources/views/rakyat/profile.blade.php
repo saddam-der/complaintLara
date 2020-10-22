@@ -39,7 +39,7 @@
                     <div class="card-body pt-0 mt-5">
                         <div class="text-center mt-5">
                             <form id="form-edit-petugas" name="form-edit-petugas" method="post" enctype="multipart/form-data">
-                            <input lang="en" class="btn btn-sm btn-primary" id="foto" type="file" name="foto"
+                            <input lang="en" class="btn btn-sm btn-primary" id="image" type="file" name="image"
                                 accept="image/*" onchange="readURL(this);">
                         </div>
                     </div>
@@ -84,24 +84,7 @@
                             <h6 class="heading-small text-muted mb-4">Contact information</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-city">ID Petugas</label>
-                                            <input type="text" id="input-city" class="form-control" value="{{ Session::get('id_petugas') }}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Level</label>
-                                            <input type="text" id="input-country" class="form-control" value="{{ Session::get('level') }}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-country">Tanggal Terdaftar</label>
-                                            <input type="number" id="input-postal-code" class="form-control" value="{{ Session::get('id_petugas') }}" disabled>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <hr class="my-4" />

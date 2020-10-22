@@ -12,10 +12,18 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{url('/dashboard')}}">
+                        @if(Auth::guard('petugas')->check())
+                        <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('beranda.petugas') }}">
                             <i class="ni ni-tv-2 text-primary"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
+                        @endif
+                        @if(Auth::guard('user')->check())
+                        <a class="nav-link" href="{{url('/dashboard')}}">
+                            <i class="ni ni-air-baloon text-primary"></i>
+                            <span class="nav-link-text">Lapor !</span>
+                        </a>
+                        @endif
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="icons.html">
@@ -30,16 +38,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('profile') }}">
+                        <a class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}" href="{{ route('profile.petugas') }}">
                             <i class="ni ni-single-02 text-yellow"></i>
                             <span class="nav-link-text">Profile</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('siswa')}}">
+                        @if(Auth::guard('petugas')->check())
+                        <a class="nav-link {{ request()->is('siswa') ? 'active' : '' }}" href="{{ url('siswa')}}">
                             <i class="ni ni-bullet-list-67 text-default"></i>
                             <span class="nav-link-text">Tables</span>
                         </a>
+                        @endif
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="login.html">

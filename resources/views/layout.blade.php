@@ -26,8 +26,9 @@
 </head>
 
 <body>
+    @if(Auth::guard('petugas')->check())
     @include('template.sidebar')
-
+    @endif
     @yield('content')
 
 
@@ -220,6 +221,29 @@
                 success: (data) => {
                     $('#btn-save').html('Save Changes');
                     alert("Data Updated");
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    $('#btn-save').html('Save Changes');
+                }
+            });
+        });
+
+        $('body').on('submit', '#form-pengaduan', function (e) {
+            e.preventDefault();
+            var actionType = $('#btn-save').val();
+            $('#btn-save').html('Sending..');
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('rakyat.nanya')}}",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: (data) => {
+                    $('#btn-save').html('Save Changes');
+                    alert("Berhasil di kirim");
                 },
                 error: function (data) {
                     console.log('Error:', data);

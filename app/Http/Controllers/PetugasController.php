@@ -13,12 +13,17 @@ class PetugasController extends Controller
     //
     public function index()
     {
-        if (Auth::guard('petugas')->check()) {
-            $user = Petugas::where('id_petugas', session::get('id_petugas'))->first();;
-        }  elseif (Auth::guard('user')->check()) {
-            $user = User::where('id_user', session::get('id_user'))->first();;
-        }
+        
+    }
 
+    public function beranda()
+    {
+        return view('petugas.dashboard');
+    }
+
+    public function profile()
+    {
+        $user = Petugas::where('id_petugas', session::get('id_petugas'))->first();;
         return view('petugas/profile' , compact('user'));
     }
 
@@ -35,15 +40,12 @@ class PetugasController extends Controller
             'email' => $request->email,
         ];
 
-        // if ($files = $request->file('image')) {
-        //     //delete old file
-        //     \File::delete('img/profile/' . $request->hidden_image);
-        //     //insert new file
-        //     $destinationPath = 'img/profile/'; // upload path
-        //     $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-        //     $files->move($destinationPath, $profileImage);
-        //     $details['foto'] = "$profileImage";
-        // }
+        if ($files = $request->file('foto')) {
+            $destinationPath = 'img/profile/'; // upload path
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $details['foto'] = "$profileImage";
+        }
 
         $data = Petugas::updateOrCreate(['id_petugas' => $id_petugas], $details);
         return response()->json($data);
